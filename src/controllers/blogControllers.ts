@@ -3,7 +3,7 @@ import Blog from "../models/Blog.js";
 import type { AuthRequest } from "../middleware/auth.js";
 import redis from "../config/redis.js";
 
-// 1. Fixed: Explicitly type req as AuthRequest and res as Response
+
 export const createBlog = async (req: AuthRequest, res: Response) => {
     try {
         const { title, content } = req.body;

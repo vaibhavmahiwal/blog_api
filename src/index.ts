@@ -9,8 +9,6 @@ import blogRoutes from "./routes/blogRoutes.js";
 import { connectDB } from "./config/database.js";
 import "./config/redis.js";
 
-
-
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(express.json()); // Parses JSON
@@ -21,7 +19,6 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // 2. STATIC FOLDER (So you can view your uploaded images)
-// This makes http://localhost:3000/uploads/your-image.jpg work
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 // 3. ROUTES
@@ -32,7 +29,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// 4. ERROR HANDLING (Must be at the very bottom)
+// 4. ERROR HANDLING 
 app.use((err: any, req: any, res: any, next: any) => {
   console.error("🔥 Global Error Handler:", err.message);
   res.status(err.status || 500).json({ 

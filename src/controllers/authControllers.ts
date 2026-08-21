@@ -27,13 +27,13 @@ import { User } from '../models/User.js';
         const token=jwt.sign({userId: String(user._id)},process.env.JWT_SECRET as string,
             {expiresIn:"7d"});
 
-            return res.status(201).json({token,user:{id:String(user._id),name:user.name,email:user.email}});
+        return res.status(201).json({token,user:{id:String(user._id),name:user.name,email:user.email}});
             
     }catch(error){
         res.status(500).json({message:'Registration failed'});
     }
  }
- 
+  
  //login a user
   export async function login(req:Request,res:Response){
       try{
